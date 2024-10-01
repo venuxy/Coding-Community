@@ -21,8 +21,10 @@ public class SubjectController {
 
     @GetMapping("/test")
     public String test(){
-        SubjectCategory subjectCategory = subjectCategoryService.queryById(1L);
-        return subjectCategory.getCategoryName();
+        System.out.println("hello world");
+        return "hello world";
+//        SubjectCategory subjectCategory = subjectCategoryService.queryById(1L);
+//        return subjectCategory.getCategoryName();
     }
 
 

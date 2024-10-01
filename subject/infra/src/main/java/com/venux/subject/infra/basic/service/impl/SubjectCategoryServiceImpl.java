@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 题目分类(SubjectCategory)表服务实现类
  *
- * @author makejava
- * @since 2023-10-01 21:50:05
+ * @author venux
+ * @since 2024-10-01 21:50:05
  */
 @Service("subjectCategoryService")
 @Slf4j

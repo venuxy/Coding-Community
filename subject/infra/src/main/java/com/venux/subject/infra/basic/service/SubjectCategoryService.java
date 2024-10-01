@@ -5,8 +5,8 @@ import com.venux.subject.infra.basic.entity.SubjectCategory;
 /**
  * 题目分类(SubjectCategory)表服务接口
  *
- * @author makejava
- * @since 2023-10-01 21:50:03
+ * @author venux
+ * @since 2024-10-01 21:50:03
  */
 public interface SubjectCategoryService {
 
