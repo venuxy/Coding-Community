@@ -29,10 +29,10 @@ public class SubjectCategoryDomainServiceImpl implements SubjectCategoryDomainSe
     }
 
 
-    public List<SubjectCategoryBO> queryPrimaryCategory() {
-        SubjectCategory subjectCategory = new SubjectCategory();
-        subjectCategory.setParentId(0L);
-        List<SubjectCategory> subjectCategoryList =  subjectCategoryService.queryPrimaryCategory(subjectCategory);
+    public List<SubjectCategoryBO> queryCategory(SubjectCategoryBO subjectCategoryBO) {
+        SubjectCategory subjectCategory = SubjectCategoryConverter.INSTANCE
+                .convertBoToCategory(subjectCategoryBO);
+        List<SubjectCategory> subjectCategoryList =  subjectCategoryService.queryCategory(subjectCategory);
         List<SubjectCategoryBO> subjectCategoryBOList = SubjectCategoryConverter.INSTANCE
                 .convertBoToCategory(subjectCategoryList);
         if(log.isInfoEnabled()){

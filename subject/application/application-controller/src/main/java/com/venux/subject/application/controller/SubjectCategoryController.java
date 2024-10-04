@@ -50,7 +50,8 @@ public class SubjectCategoryController {
     @PostMapping("/queryPrimaryCategory")
     public Result<SubjectCategoryDTO> queryPrimaryCategory(){
         try {
-            List<SubjectCategoryBO> subjectCategoryBOList = subjectCategoryDomainService.queryPrimaryCategory();
+            SubjectCategoryBO subjectCategoryBO = new SubjectCategoryBO();
+            List<SubjectCategoryBO> subjectCategoryBOList = subjectCategoryDomainService.queryCategory(subjectCategoryBO);
             List<SubjectCategoryDTO> subjectCategoryDTOList = SubjectCategoryDTOConverter.INSTANCE.
                     convertBoToCategoryDTOList(subjectCategoryBOList);
             return Result.ok(subjectCategoryDTOList);
@@ -60,4 +61,22 @@ public class SubjectCategoryController {
         }
     }
 
+    @PostMapping("/queryCategoryByPrimary")
+    public Result<SubjectCategoryDTO> queryCategoryByPrimary(@RequestBody SubjectCategoryDTO subjectCategoryDTO){
+        try {
+            if(log.isInfoEnabled()){
+                log.info("SubjectCategoryController.queryCategoryByPrimary.dto:{}", JSON.toJSONString(subjectCategoryDTO));
+            }
+            Preconditions.checkNotNull(subjectCategoryDTO.getParentId(),"分类父级id不能为空");
+            SubjectCategoryBO subjectCategoryBO = SubjectCategoryDTOConverter.INSTANCE.convertBoToCategory(subjectCategoryDTO);
+            List<SubjectCategoryBO> subjectCategoryBOList = subjectCategoryDomainService.queryCategory(subjectCategoryBO);
+            List<SubjectCategoryDTO> subjectCategoryDTOList = SubjectCategoryDTOConverter.INSTANCE.
+                    convertBoToCategoryDTOList(subjectCategoryBOList);
+            return Result.ok(subjectCategoryDTOList);
+        } catch (Exception e) {
+            log.error("SubjectCategoryController.queryCategoryByPrimary.error:{}",e.getMessage(),e);
+            return Result.fail("查询失败");
+        }
+
+    }
 }

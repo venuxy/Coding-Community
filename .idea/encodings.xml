@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/cc-subject/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cc-subject/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/application/application-controller/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/application/application-controller/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/application/application-job/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/application/application-job/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/application/application-mq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/application/application-mq/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/infra/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/infra/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/starter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/subject-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/subject-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/subject-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/subject-application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/subject-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/subject/subject-domain/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

@@ -12,5 +12,5 @@ public interface SubjectCategoryDomainService {
     /**
      * 查询岗位大类
      */
-    List<SubjectCategoryBO> queryPrimaryCategory();
+    List<SubjectCategoryBO> queryCategory(SubjectCategoryBO subjectCategoryBO);
 }
