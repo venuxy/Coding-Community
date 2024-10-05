@@ -8,13 +8,27 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-10-04T13:21:49+0800",
+    date = "2024-10-05T10:37:25+0800",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 1.8.0_342 (Amazon.com Inc.)"
 )
 public class SubjectCategoryDTOConverterImpl implements SubjectCategoryDTOConverter {
 
     @Override
-    public SubjectCategoryBO convertBoToCategory(SubjectCategoryDTO subjectCategoryDTO) {
+    public List<SubjectCategoryDTO> convertBoToCategoryDTOList(List<SubjectCategoryBO> subjectCategoryDTO) {
+        if ( subjectCategoryDTO == null ) {
+            return null;
+        }
+
+        List<SubjectCategoryDTO> list = new ArrayList<SubjectCategoryDTO>( subjectCategoryDTO.size() );
+        for ( SubjectCategoryBO subjectCategoryBO : subjectCategoryDTO ) {
+            list.add( convertBoToCategoryDTO( subjectCategoryBO ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public SubjectCategoryBO convertDtoToCategoryBO(SubjectCategoryDTO subjectCategoryDTO) {
         if ( subjectCategoryDTO == null ) {
             return null;
         }
@@ -31,20 +45,7 @@ public class SubjectCategoryDTOConverterImpl implements SubjectCategoryDTOConver
     }
 
     @Override
-    public List<SubjectCategoryDTO> convertBoToCategoryDTOList(List<SubjectCategoryBO> subjectCategoryBOList) {
-        if ( subjectCategoryBOList == null ) {
-            return null;
-        }
-
-        List<SubjectCategoryDTO> list = new ArrayList<SubjectCategoryDTO>( subjectCategoryBOList.size() );
-        for ( SubjectCategoryBO subjectCategoryBO : subjectCategoryBOList ) {
-            list.add( subjectCategoryBOToSubjectCategoryDTO( subjectCategoryBO ) );
-        }
-
-        return list;
-    }
-
-    protected SubjectCategoryDTO subjectCategoryBOToSubjectCategoryDTO(SubjectCategoryBO subjectCategoryBO) {
+    public SubjectCategoryDTO convertBoToCategoryDTO(SubjectCategoryBO subjectCategoryBO) {
         if ( subjectCategoryBO == null ) {
             return null;
         }
