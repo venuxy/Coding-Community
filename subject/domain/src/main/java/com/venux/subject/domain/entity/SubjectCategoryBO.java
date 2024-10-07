@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 题目分类(SubjectCategory)实体类
+ * 题目分类bo
  *
  * @author venux
  * @since 2024-10-01 21:49:59
