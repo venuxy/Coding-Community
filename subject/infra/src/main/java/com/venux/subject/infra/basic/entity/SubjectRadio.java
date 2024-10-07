@@ -6,48 +6,53 @@ import java.util.Date;
 import java.io.Serializable;
 
 /**
- * 题目分类关系表(SubjectMapping)实体类
+ * 单选题信息表(SubjectRadio)实体类
  *
  * @author makejava
- * @since 2024-10-06 11:35:07
+ * @since 2024-10-07 17:35:21
  */
 @Data
-public class SubjectMapping implements Serializable {
-    private static final long serialVersionUID = 587989271193563025L;
-/**
+public class SubjectRadio implements Serializable {
+    private static final long serialVersionUID = 233482288402077762L;
+
+    /**
      * 主键
      */
     private Long id;
-/**
+    /**
      * 题目id
      */
     private Long subjectId;
-/**
-     * 分类id
+    /**
+     * a,b,c,d
      */
-    private Long categoryId;
-/**
-     * 标签id
+    private Integer optionType;
+    /**
+     * 选项内容
      */
-    private Long labelId;
-/**
+    private String optionContent;
+    /**
+     * 是否正确
+     */
+    private Integer isCorrect;
+    /**
      * 创建人
      */
     private String createdBy;
-/**
+    /**
      * 创建时间
      */
     private Date createdTime;
-/**
+    /**
      * 修改人
      */
     private String updateBy;
-/**
+    /**
      * 修改时间
      */
     private Date updateTime;
-/**
-     * 是否已删除
+    /**
+     * 是否删除
      */
     private Integer isDeleted;
 
