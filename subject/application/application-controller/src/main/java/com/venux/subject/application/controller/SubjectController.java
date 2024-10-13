@@ -2,11 +2,16 @@ package com.venux.subject.application.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Preconditions;
+import com.venux.subject.application.convert.SubjectAnswerDTOConverter;
 import com.venux.subject.application.convert.SubjectCategoryDTOConverter;
+import com.venux.subject.application.convert.SubjectInfoDTOConverter;
 import com.venux.subject.application.dto.SubjectCategoryDTO;
 import com.venux.subject.application.dto.SubjectInfoDTO;
+import com.venux.subject.common.entity.PageResult;
 import com.venux.subject.common.entity.Result;
+import com.venux.subject.domain.entity.SubjectAnswerBO;
 import com.venux.subject.domain.entity.SubjectCategoryBO;
+import com.venux.subject.domain.entity.SubjectInfoBO;
 import com.venux.subject.domain.service.SubjectInfoDomainService;
 import com.venux.subject.infra.basic.entity.SubjectCategory;
 import com.venux.subject.infra.basic.entity.SubjectInfo;
@@ -15,12 +20,10 @@ import com.venux.subject.infra.basic.service.SubjectInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 刷题controller
@@ -29,6 +32,7 @@ import javax.annotation.Resource;
  * @date: 2024/9/29
  */
 @RestController
+@RequestMapping("/subject")
 @Slf4j
 public class SubjectController {
 
@@ -51,9 +55,62 @@ public class SubjectController {
             Preconditions.checkArgument(!CollectionUtils.isEmpty(subjectInfoDTO.getLabelIds())
                     , "标签id不能为空");
 
+            SubjectInfoBO subjectInfoBO = SubjectInfoDTOConverter.INSTANCE.convertDTOToBO(subjectInfoDTO);
+            List<SubjectAnswerBO> subjectAnswerBOS =
+                    SubjectAnswerDTOConverter.INSTANCE.convertListDTOToBO(subjectInfoDTO.getOptionList());
+            subjectInfoBO.setOptionList(subjectAnswerBOS);
+            subjectInfoDomainService.add(subjectInfoBO);
+
             return Result.ok(true);
         }catch (Exception e){
             log.error("SubjectCategoryController.add.error:{}",e.getMessage(),e);
+            return Result.fail("新增分类失败");
+        }
+    }
+
+    /**
+     * 查询题目列表
+     */
+    @PostMapping("/getSubjectPage")
+    public Result<PageResult<SubjectInfoDTO>> getSubjectPage(@RequestBody SubjectInfoDTO subjectInfoDTO){
+        try {
+            if(log.isInfoEnabled()){
+                log.info("SubjectController.getSubjectPage.dto:{}", JSON.toJSONString(subjectInfoDTO));
+            }
+            Preconditions.checkNotNull(subjectInfoDTO.getCategoryId(), "分类id不能为空");
+            Preconditions.checkNotNull(subjectInfoDTO.getLabelId(), "标签id不能为空");
+            SubjectInfoBO subjectInfoBO = SubjectInfoDTOConverter.INSTANCE.convertDTOToBO(subjectInfoDTO);
+            subjectInfoBO.setPageNo(subjectInfoDTO.getPageNo());
+            subjectInfoBO.setPageSize(subjectInfoDTO.getPageSize());
+            PageResult<SubjectInfoBO> boPageResult =  subjectInfoDomainService.getSubjectPage(subjectInfoBO);
+            return Result.ok(boPageResult);
+
+        }catch (Exception e){
+            log.error("SubjectCategoryController.getSubjectPage.error:{}",e.getMessage(),e);
+            return Result.fail("查询题目详情失败");
+        }
+    }
+
+    /**
+     * 查询题目信息
+     */
+    @PostMapping("/querySubjectInfo")
+    public Result<SubjectInfoDTO> querySubjectInfo(@RequestBody SubjectInfoDTO subjectInfoDTO){
+        try {
+            if(log.isInfoEnabled()){
+                log.info("SubjectController.querySubjectInfo.dto:{}", JSON.toJSONString(subjectInfoDTO));
+            }
+            Preconditions.checkNotNull(subjectInfoDTO.getId(), "题目id不能为空");
+            Preconditions.checkNotNull(subjectInfoDTO.getCategoryId(), "分类id不能为空");
+            Preconditions.checkNotNull(subjectInfoDTO.getLabelId(), "标签id不能为空");
+
+            SubjectInfoBO subjectInfoBO = SubjectInfoDTOConverter.INSTANCE.convertDTOToBO(subjectInfoDTO);
+            SubjectInfoBO boResult =  subjectInfoDomainService.querySubjectInfo(subjectInfoBO);
+            SubjectInfoDTO dto = SubjectInfoDTOConverter.INSTANCE.convertBOToDTO(boResult);
+            return Result.ok(dto);
+
+        }catch (Exception e){
+            log.error("SubjectCategoryController.querySubjectInfo.error:{}",e.getMessage(),e);
             return Result.fail("新增分类失败");
         }
     }

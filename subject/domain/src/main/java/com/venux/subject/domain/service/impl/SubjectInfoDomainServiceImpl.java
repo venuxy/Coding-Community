@@ -1,6 +1,7 @@
 package com.venux.subject.domain.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.venux.subject.common.entity.PageResult;
 import com.venux.subject.common.enums.IsDeletedFlagEnum;
 import com.venux.subject.domain.convert.SubjectInfoConverter;
 import com.venux.subject.domain.entity.SubjectInfoBO;
@@ -8,6 +9,7 @@ import com.venux.subject.domain.handler.subject.SubjectTypeHandler;
 import com.venux.subject.domain.handler.subject.SubjectTypeHandlerFactory;
 import com.venux.subject.domain.service.SubjectInfoDomainService;
 import com.venux.subject.infra.basic.entity.SubjectInfo;
+import com.venux.subject.infra.basic.entity.SubjectLabel;
 import com.venux.subject.infra.basic.entity.SubjectMapping;
 import com.venux.subject.infra.basic.service.SubjectInfoService;
 import com.venux.subject.infra.basic.service.SubjectMappingService;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -60,6 +63,34 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
             });
         });
         subjectMappingService.batchInsert(mappingList);
+    }
+
+    @Override
+    public PageResult<SubjectInfoBO> getSubjectPage(SubjectInfoBO subjectInfoBO) {
+        PageResult<SubjectInfoBO> pageResult = new PageResult<>();
+        pageResult.setPageNo(subjectInfoBO.getPageNo());
+        pageResult.setPageSize(subjectInfoBO.getPageSize());
+        int start = (subjectInfoBO.getPageNo() - 1) * subjectInfoBO.getPageSize();
+        SubjectInfo subjectInfo = SubjectInfoConverter.INSTANCE.convertBoToInfo(subjectInfoBO);
+        int count = subjectInfoService.countByCondition(subjectInfo, subjectInfoBO.getCategoryId(), subjectInfoBO.getLabelId());
+        if (count == 0) {
+            return pageResult;
+        }
+
+        List<SubjectInfo> subjectInfoList = subjectInfoService.queryPage(subjectInfo, subjectInfoBO.getCategoryId(), subjectInfoBO.getLabelId(), start, subjectInfoBO.getPageSize());
+
+        List<SubjectInfoBO> subjectInfoBOList = SubjectInfoConverter.INSTANCE.convertListInfoToBO(subjectInfoList);
+        pageResult.setTotal(count);
+        pageResult.setRecords(subjectInfoBOList);
+
+        return pageResult;
+
+    }
+
+    @Override
+    public SubjectInfoBO querySubjectInfo(SubjectInfoBO subjectInfoBO) {
+        SubjectInfo subjectInfo = subjectInfoService.queryById(subjectInfoBO.getId());
+        return null;
     }
 
 

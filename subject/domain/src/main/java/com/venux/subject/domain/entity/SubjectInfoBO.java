@@ -1,5 +1,6 @@
 package com.venux.subject.domain.entity;
 
+import com.venux.subject.common.entity.PageInfo;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,7 +10,7 @@ import java.util.List;
  * 题目bo
  */
 @Data
-public class SubjectInfoBO {
+public class SubjectInfoBO extends PageInfo {
 
     /**
      * 主键

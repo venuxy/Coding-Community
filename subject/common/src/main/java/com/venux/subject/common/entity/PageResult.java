@@ -1,5 +1,7 @@
 package com.venux.subject.common.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
  * @author: venux
  * @date: 2024/10/8
  */
+@Data
 public class PageResult<T> implements Serializable {
     private Integer pageNo = 1;
 

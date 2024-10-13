@@ -1,12 +1,17 @@
 package com.venux.subject.common.entity;
 
+import lombok.Data;
+
+import java.io.Serializable;
+
 /**
  * 分页请求实体
  *
  * @author: venux
  * @date: 2024/10/8
  */
-public class PageInfo {
+@Data
+public class PageInfo implements Serializable {
     private Integer pageNo = 1;
     private  Integer pageSize = 20;
 

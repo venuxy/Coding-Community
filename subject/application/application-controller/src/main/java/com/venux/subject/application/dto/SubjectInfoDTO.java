@@ -1,6 +1,7 @@
 package com.venux.subject.application.dto;
 
 //import com.venux.subject.common.entity.PageInfo;
+import com.venux.subject.common.entity.PageInfo;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.util.List;
  * @date 2024/10/7 16:33
  */
 @Data
-public class SubjectInfoDTO {
+public class SubjectInfoDTO extends PageInfo {
 
     /**
      * 主键

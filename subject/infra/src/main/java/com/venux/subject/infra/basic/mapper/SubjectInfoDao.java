@@ -2,6 +2,7 @@ package com.venux.subject.infra.basic.mapper;
 
 import com.venux.subject.infra.basic.entity.SubjectInfo;
 import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 /**
@@ -77,5 +78,14 @@ public interface SubjectInfoDao {
      */
     int deleteById(Long id);
 
+    int countByCondition(@Param("subjectInfo") SubjectInfo subjectInfo,
+                         @Param("categoryId") Long categoryId,
+                         @Param("labelId") Long labelId);
+
+    List<SubjectInfo> queryPage(@Param("subjectInfo") SubjectInfo subjectInfo,
+                                @Param("categoryId") Long categoryId,
+                                @Param("labelId") Long labelId,
+                                @Param("start") int start,
+                                @Param("pageSize") Integer pageSize);
 }
 
