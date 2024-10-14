@@ -1,5 +1,6 @@
 package com.venux.subject.infra.basic.service;
 
+import com.venux.subject.infra.basic.entity.SubjectLabel;
 import com.venux.subject.infra.basic.entity.SubjectMapping;
 
 import java.util.List;
@@ -54,4 +55,5 @@ public interface SubjectMappingService {
      * 批量插入
      */
     void batchInsert(List<SubjectMapping> mappingList);
+
 }

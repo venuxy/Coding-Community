@@ -41,4 +41,16 @@ public class RadioTypeHandler implements SubjectTypeHandler {
         subjectRadioService.batchInsert(subjectRadioList);
     }
 
+    @Override
+    public SubjectOptionBO query(int subjectId) {
+        SubjectRadio subjectRadio = new SubjectRadio();
+        subjectRadio.setSubjectId(Long.valueOf(subjectId));
+
+        List<SubjectRadio> subjectRadioList = subjectRadioService.queryByCondition(subjectRadio);
+        List<SubjectAnswerBO> subjectAnswerBOList = RadioSubjectConverter.INSTANCE.convertEntityToBoList(subjectRadioList);
+        SubjectOptionBO subjectOptionBO = new SubjectOptionBO();
+        subjectOptionBO.setOptionList(subjectAnswerBOList);
+        return subjectOptionBO;
+    }
+
 }

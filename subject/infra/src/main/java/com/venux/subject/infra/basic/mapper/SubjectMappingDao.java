@@ -1,5 +1,6 @@
 package com.venux.subject.infra.basic.mapper;
 
+import com.venux.subject.infra.basic.entity.SubjectLabel;
 import com.venux.subject.infra.basic.entity.SubjectMapping;
 import org.apache.ibatis.annotations.Param;
 
@@ -81,5 +82,6 @@ public interface SubjectMappingDao {
     int deleteById(Long id);
 
     List<SubjectMapping> queryDistinctLabelId(SubjectMapping subjectMapping);
+
 }
 

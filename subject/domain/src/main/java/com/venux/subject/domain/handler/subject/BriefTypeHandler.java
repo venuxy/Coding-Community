@@ -28,9 +28,22 @@ public class BriefTypeHandler implements SubjectTypeHandler{
     @Override
     public void add(SubjectInfoBO subjectInfoBO) {
         SubjectBrief subjectBrief = BriefSubjectConverter.INSTANCE.convertBoToEntity(subjectInfoBO);
-        subjectBrief.setSubjectId(subjectInfoBO.getId().intValue());
+        subjectBrief.setSubjectId(subjectInfoBO.getId());
         subjectBrief.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
         subjectBriefService.insert(subjectBrief);
+    }
+
+    @Override
+    public SubjectOptionBO query(int subjectId) {
+
+        SubjectBrief subjectBrief = new SubjectBrief();
+        subjectBrief.setSubjectId(Long.valueOf(subjectId));
+
+        SubjectBrief result = subjectBriefService.queryByCondition(subjectBrief);
+        SubjectOptionBO subjectOptionBO = new SubjectOptionBO();
+        subjectOptionBO.setSubjectAnswer(result.getSubjectAnswer());
+        return subjectOptionBO;
+
     }
 
 }

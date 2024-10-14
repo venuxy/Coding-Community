@@ -40,4 +40,15 @@ public class MultipleTypeHandler implements SubjectTypeHandler{
         });
         subjectMultipleService.batchInsert(subjectMultipleList);
     }
+
+    @Override
+    public SubjectOptionBO query(int subjectId) {
+        SubjectMultiple subjectMultiple = new SubjectMultiple();
+        subjectMultiple.setSubjectId(Long.valueOf(subjectId));
+        List<SubjectMultiple> result = subjectMultipleService.queryByCondition(subjectMultiple);
+        List<SubjectAnswerBO> subjectAnswerBOList = MultipleSubjectConverter.INSTANCE.convertEntityToBoList(result);
+        SubjectOptionBO subjectOptionBO = new SubjectOptionBO();
+        subjectOptionBO.setOptionList(subjectAnswerBOList);
+        return subjectOptionBO;
+    }
 }

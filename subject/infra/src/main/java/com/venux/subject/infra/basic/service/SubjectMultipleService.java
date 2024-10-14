@@ -48,4 +48,6 @@ public interface SubjectMultipleService {
      * 批量插入
      */
     void batchInsert(List<SubjectMultiple> subjectMultipleList);
+
+    List<SubjectMultiple> queryByCondition(SubjectMultiple subjectMultiple);
 }

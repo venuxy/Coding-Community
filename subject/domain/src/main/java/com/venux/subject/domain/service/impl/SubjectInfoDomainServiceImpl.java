@@ -5,6 +5,7 @@ import com.venux.subject.common.entity.PageResult;
 import com.venux.subject.common.enums.IsDeletedFlagEnum;
 import com.venux.subject.domain.convert.SubjectInfoConverter;
 import com.venux.subject.domain.entity.SubjectInfoBO;
+import com.venux.subject.domain.entity.SubjectOptionBO;
 import com.venux.subject.domain.handler.subject.SubjectTypeHandler;
 import com.venux.subject.domain.handler.subject.SubjectTypeHandlerFactory;
 import com.venux.subject.domain.service.SubjectInfoDomainService;
@@ -12,6 +13,7 @@ import com.venux.subject.infra.basic.entity.SubjectInfo;
 import com.venux.subject.infra.basic.entity.SubjectLabel;
 import com.venux.subject.infra.basic.entity.SubjectMapping;
 import com.venux.subject.infra.basic.service.SubjectInfoService;
+import com.venux.subject.infra.basic.service.SubjectLabelService;
 import com.venux.subject.infra.basic.service.SubjectMappingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,9 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
 
     @Resource
     private SubjectMappingService subjectMappingService;
+
+    @Resource
+    private SubjectLabelService subjectLabelService;
 
     @Resource
     private SubjectTypeHandlerFactory subjectTypeHandlerFactory;
@@ -90,7 +95,21 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
     @Override
     public SubjectInfoBO querySubjectInfo(SubjectInfoBO subjectInfoBO) {
         SubjectInfo subjectInfo = subjectInfoService.queryById(subjectInfoBO.getId());
-        return null;
+        SubjectTypeHandler handler = subjectTypeHandlerFactory.getHandler(subjectInfo.getSubjectType());
+        SubjectOptionBO optionBO = handler.query(subjectInfo.getId().intValue());
+        SubjectInfoBO bo = SubjectInfoConverter.INSTANCE.convertOptionAndInfoToBo(optionBO, subjectInfo);
+
+        SubjectMapping subjectMapping = new SubjectMapping();
+        subjectMapping.setSubjectId(subjectInfo.getId());
+        subjectMapping.setIsDeleted(IsDeletedFlagEnum.UN_DELETED.getCode());
+
+        List<SubjectMapping> subjectMappingList = subjectMappingService.queryLabelId(subjectMapping);
+        List<Long> labelIdList = subjectMappingList.stream().map(SubjectMapping::getLabelId).collect(Collectors.toList());
+        List<SubjectLabel> subjectLabelList = subjectLabelService.batchQueryById(labelIdList);
+        List<String> labelNameList = subjectLabelList.stream().map(SubjectLabel::getLabelName).collect(Collectors.toList());
+
+        bo.setLabelName(labelNameList);
+        return bo;
     }
 
 

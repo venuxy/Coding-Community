@@ -24,17 +24,17 @@ id, subject_answer, subject_id, created_by, created_time, update_by, update_time
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="SubjectBriefMap">
         select
-id, subject_answer, subject_id, created_by, created_time, update_by, update_time, is_deleted
+        id, subject_id, subject_answer, created_by, created_time, update_by, update_time, is_deleted
         from subject_brief
         <where>
             <if test="id != null">
                 and id = #{id}
             </if>
-            <if test="subjectAnswer != null and subjectAnswer != ''">
-                and subject_answer = #{subjectAnswer}
-            </if>
             <if test="subjectId != null">
                 and subject_id = #{subjectId}
+            </if>
+            <if test="subjectAnswer != null and subjectAnswer != ''">
+                and subject_answer = #{subjectAnswer}
             </if>
             <if test="createdBy != null and createdBy != ''">
                 and created_by = #{createdBy}
@@ -52,7 +52,6 @@ id, subject_answer, subject_id, created_by, created_time, update_by, update_time
                 and is_deleted = #{isDeleted}
             </if>
         </where>
-        limit #{pageable.offset}, #{pageable.pageSize}
     </select>
 
     <!--统计总行数-->

@@ -1,6 +1,7 @@
 package com.venux.subject.infra.basic.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.venux.subject.infra.basic.entity.SubjectLabel;
 import com.venux.subject.infra.basic.entity.SubjectMapping;
 import com.venux.subject.infra.basic.mapper.SubjectMappingDao;
 import com.venux.subject.infra.basic.service.SubjectMappingService;
@@ -74,4 +75,5 @@ public class SubjectMappingServiceImpl implements SubjectMappingService {
     public void batchInsert(List<SubjectMapping> mappingList) {
         this.subjectMappingDao.insertBatch(mappingList);
     }
+
 }
