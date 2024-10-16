@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.venux</groupId>
@@ -18,18 +18,33 @@
 
   <build>
     <plugins>
+      <!-- Maven 编译器插件 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>  <!-- 你可以选择较新的版本 -->
+        <version>3.8.1</version>
         <configuration>
-          <source>1.8</source>  <!-- 这里设置为 1.8 与当前使用的 Java 版本匹配 -->
-          <target>1.8</target>  <!-- 目标字节码版本设置为 1.8 -->
+          <source>1.8</source>  <!-- 设置 Java 源码版本为 1.8 -->
+          <target>1.8</target>  <!-- 设置目标字节码版本为 1.8 -->
+        </configuration>
+      </plugin>
+
+      <!-- Maven Jar 插件 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+              <!-- 这里设置主类的全限定名 -->
+              <mainClass>com.venux.starter.SubjectApplication</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
   </build>
-
-
 
 </project>
