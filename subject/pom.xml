@@ -39,7 +39,7 @@
             <manifest>
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               <!-- 这里设置主类的全限定名 -->
-              <mainClass>com.venux.starter.SubjectApplication</mainClass>
+              <mainClass>com.venux.starter.com.venux.subject.SubjectApplication</mainClass>
             </manifest>
           </archive>
         </configuration>
