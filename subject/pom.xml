@@ -16,5 +16,20 @@
     <module>starter</module>
   </modules>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>  <!-- 你可以选择较新的版本 -->
+        <configuration>
+          <source>1.8</source>  <!-- 这里设置为 1.8 与当前使用的 Java 版本匹配 -->
+          <target>1.8</target>  <!-- 目标字节码版本设置为 1.8 -->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
 
 </project>
