@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.venux</groupId>
         <artifactId>subject</artifactId>
@@ -21,13 +22,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.4.2</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                    <groupId>org.springframework.boot</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.venux</groupId>
@@ -41,55 +35,14 @@
         </dependency>
     </dependencies>
 
-<!--    &lt;!&ndash; Maven Jar 插件 &ndash;&gt;-->
-<!--    <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-jar-plugin</artifactId>-->
-<!--        <version>2.4</version>-->
-<!--        <configuration>-->
-<!--            <archive>-->
-<!--                <manifest>-->
-<!--                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>-->
-<!--                    &lt;!&ndash; 这里设置主类的全限定名 &ndash;&gt;-->
-<!--                    <mainClass>com.venux.subject.SubjectApplication</mainClass>-->
-<!--                </manifest>-->
-<!--            </archive>-->
-<!--        </configuration>-->
-<!--    </plugin>-->
-
-
     <build>
-        <finalName>${project.artifactId}</finalName>
-        <!--打包成jar包时的名字-->
+        <finalName>${project.artifactId}</finalName> <!-- Jar包名 -->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.3.0.RELEASE</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.3.0.RELEASE</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
-
-
 
 </project>
