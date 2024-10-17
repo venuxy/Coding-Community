@@ -28,22 +28,6 @@
           <target>1.8</target>  <!-- 设置目标字节码版本为 1.8 -->
         </configuration>
       </plugin>
-
-      <!-- Maven Jar 插件 -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.4</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              <!-- 这里设置主类的全限定名 -->
-              <mainClass>com.venux.subject.SubjectApplication</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
 

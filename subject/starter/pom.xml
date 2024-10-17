@@ -41,4 +41,55 @@
         </dependency>
     </dependencies>
 
+<!--    &lt;!&ndash; Maven Jar 插件 &ndash;&gt;-->
+<!--    <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-jar-plugin</artifactId>-->
+<!--        <version>2.4</version>-->
+<!--        <configuration>-->
+<!--            <archive>-->
+<!--                <manifest>-->
+<!--                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>-->
+<!--                    &lt;!&ndash; 这里设置主类的全限定名 &ndash;&gt;-->
+<!--                    <mainClass>com.venux.subject.SubjectApplication</mainClass>-->
+<!--                </manifest>-->
+<!--            </archive>-->
+<!--        </configuration>-->
+<!--    </plugin>-->
+
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <!--打包成jar包时的名字-->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.0.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.0.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
 </project>
