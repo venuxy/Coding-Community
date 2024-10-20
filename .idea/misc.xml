@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/cc-subject/pom.xml" />
         <option value="$PROJECT_DIR$/subject/pom.xml" />
+        <option value="$PROJECT_DIR$/oss/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
