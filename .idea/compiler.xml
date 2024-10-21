@@ -19,16 +19,16 @@
         <module name="domain" />
         <module name="application-mq" />
         <module name="infra" />
-        <module name="jc-club-oss" />
+        <module name="oss" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cc-subject" target="1.7" />
       <module name="ear" target="1.5" />
       <module name="ejbs" target="1.7" />
+      <module name="jc-club-oss" target="1.8" />
       <module name="jc-club-starter" target="1.8" />
       <module name="logging" target="1.7" />
-      <module name="oss" target="1.8" />
       <module name="primary-source" target="1.7" />
       <module name="project" target="1.5" />
       <module name="projects" target="1.5" />
