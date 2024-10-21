@@ -15,11 +15,13 @@
         <module name="common" />
         <module name="starter" />
         <module name="application-controller" />
+        <module name="auth" />
         <module name="application-job" />
         <module name="domain" />
         <module name="application-mq" />
         <module name="infra" />
         <module name="oss" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
