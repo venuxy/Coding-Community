@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/auth/auth-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-application/auth-application-controller/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-application/auth-application-controller/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-application/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-application/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-domain/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-infra/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-infra/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/auth/auth-starter/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/auth/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cc-subject/src/main/java" charset="UTF-8" />

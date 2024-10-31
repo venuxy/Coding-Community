@@ -12,15 +12,20 @@
         <outputRelativeToContentRoot value="true" />
         <module name="subject-api" />
         <module name="cc-subject" />
-        <module name="common" />
+        <module name="auth-starter" />
         <module name="starter" />
+        <module name="application-mq" />
+        <module name="auth-domain" />
+        <module name="infra" />
+        <module name="auth-application-controller" />
+        <module name="oss" />
+        <module name="common" />
         <module name="application-controller" />
-        <module name="auth" />
         <module name="application-job" />
         <module name="domain" />
-        <module name="application-mq" />
-        <module name="infra" />
-        <module name="oss" />
+        <module name="auth-api" />
+        <module name="auth-infra" />
+        <module name="auth-common" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
