@@ -1,8 +1,11 @@
 package com.venux.auth.application.controller;
 
 import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 
 /**
  * @author: venux
@@ -26,7 +29,13 @@ public class UserController {
     // 查询登录状态，浏览器访问： http://localhost:8081/user/isLogin
     @RequestMapping("isLogin")
     public String isLogin() {
+        ArrayList list = new ArrayList();
         return "当前会话是否登录：" + StpUtil.isLogin();
+    }
+
+    @RequestMapping("tokenInfo")
+    public SaResult tokenInfo() {
+        return SaResult.data(StpUtil.getTokenInfo());
     }
 
 }

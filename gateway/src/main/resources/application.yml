@@ -48,7 +48,7 @@ spring:
     # Redis服务器连接端口
     port: 6379
     # Redis服务器连接密码（默认为空）
-    password: jichi1234
+    password: cc838342
     # 连接超时时间
     timeout: 2s
     lettuce:
@@ -76,4 +76,4 @@ sa-token:
   token-style: random-32
   # 是否输出操作日志
   is-log: true
-  token-prefix: venux
+#  token-prefix: venux
