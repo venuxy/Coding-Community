@@ -11,12 +11,12 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan("com.venux")
-//@MapperScan("com.venux.**.mapper")
+@MapperScan("com.venux.**.mapper")
 public class AuthApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AuthApplication.class);
-        SaManager.getSaTokenDao().set("name", "value", 100000);
+        //SaManager.getSaTokenDao().set("name", "value", 100000);
     }
 
 }
