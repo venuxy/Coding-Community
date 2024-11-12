@@ -145,6 +145,9 @@ id, user_name, nick_name, email, phone, password, sex, avatar, status, introduce
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         insert into auth_user(user_name, nick_name, email, phone, password, sex, avatar, status, introduce, ext_json, created_by, created_time, update_by, update_time, is_deleted)
         values (#{userName}, #{nickName}, #{email}, #{phone}, #{password}, #{sex}, #{avatar}, #{status}, #{introduce}, #{extJson}, #{createdBy}, #{createdTime}, #{updateBy}, #{updateTime}, #{isDeleted})
     </insert>

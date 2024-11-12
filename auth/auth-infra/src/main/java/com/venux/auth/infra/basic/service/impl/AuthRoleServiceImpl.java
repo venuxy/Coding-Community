@@ -61,4 +61,9 @@ public class AuthRoleServiceImpl implements AuthRoleService {
     public boolean deleteById(Long id) {
         return this.authRoleDao.deleteById(id) > 0;
     }
+
+    @Override
+    public AuthRole queryByCondition(AuthRole authRole) {
+        return this.authRoleDao.queryAllByLimit(authRole);
+    }
 }
