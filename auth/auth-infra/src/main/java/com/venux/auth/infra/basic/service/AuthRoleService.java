@@ -1,14 +1,14 @@
 package com.venux.auth.infra.basic.service;
 
-import com.venux.auth.infra.basic.entity.AuthUser;
+import com.venux.auth.infra.basic.entity.AuthRole;
 
 /**
- * 用户信息表(AuthUser)表服务接口
+ * (AuthRole)表服务接口
  *
  * @author makejava
- * @since 2024-11-09 15:13:25
+ * @since 2024-11-10 20:03:49
  */
-public interface AuthUserService {
+public interface AuthRoleService {
 
     /**
      * 通过ID查询单条数据
@@ -16,23 +16,23 @@ public interface AuthUserService {
      * @param id 主键
      * @return 实例对象
      */
-    AuthUser queryById(Long id);
+    AuthRole queryById(Long id);
 
     /**
      * 新增数据
      *
-     * @param authUser 实例对象
+     * @param authRole 实例对象
      * @return 实例对象
      */
-    int insert(AuthUser authUser);
+    int insert(AuthRole authRole);
 
     /**
      * 修改数据
      *
-     * @param authUser 实例对象
+     * @param authRole 实例对象
      * @return 实例对象
      */
-    int update(AuthUser authUser);
+    int update(AuthRole authRole);
 
     /**
      * 通过主键删除数据

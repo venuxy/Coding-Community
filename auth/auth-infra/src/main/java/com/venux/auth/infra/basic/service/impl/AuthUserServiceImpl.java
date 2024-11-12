@@ -36,7 +36,7 @@ public class AuthUserServiceImpl implements AuthUserService {
      * @return 实例对象
      */
     @Override
-    public Integer insert(AuthUser authUser) {
+    public int insert(AuthUser authUser) {
         return this.authUserDao.insert(authUser);
     }
 
@@ -47,7 +47,7 @@ public class AuthUserServiceImpl implements AuthUserService {
      * @return 实例对象
      */
     @Override
-    public Integer update(AuthUser authUser) {
+    public int update(AuthUser authUser) {
         return this.authUserDao.update(authUser);
     }
 
