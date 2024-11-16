@@ -2,6 +2,8 @@ package com.venux.auth.infra.basic.service;
 
 import com.venux.auth.infra.basic.entity.AuthPermission;
 
+import java.util.List;
+
 /**
  * (AuthPermission)表服务接口
  *
@@ -42,4 +44,5 @@ public interface AuthPermissionService {
      */
     boolean deleteById(Long id);
 
+    List<AuthPermission> queryByRoleList(List<Long> permissionIdList);
 }

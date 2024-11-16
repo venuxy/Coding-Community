@@ -45,4 +45,6 @@ public interface AuthRolePermissionService {
     boolean deleteById(Long id);
 
     int insertBatch(List<AuthRolePermission> authRolePermissionList);
+
+    List<AuthRolePermission> queryByCondition(AuthRolePermission authRolePermission);
 }

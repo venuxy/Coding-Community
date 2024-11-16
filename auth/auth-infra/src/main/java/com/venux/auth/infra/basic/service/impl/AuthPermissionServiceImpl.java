@@ -6,6 +6,7 @@ import com.venux.auth.infra.basic.service.AuthPermissionService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (AuthPermission)表服务实现类
@@ -60,5 +61,10 @@ public class AuthPermissionServiceImpl implements AuthPermissionService {
     @Override
     public boolean deleteById(Long id) {
         return this.authPermissionDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public List<AuthPermission> queryByRoleList(List<Long> permissionIdList) {
+        return authPermissionDao.queryByRoleList(permissionIdList);
     }
 }
