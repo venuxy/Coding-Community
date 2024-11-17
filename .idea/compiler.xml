@@ -11,6 +11,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="subject-api" />
+        <module name="wx" />
         <module name="cc-subject" />
         <module name="auth-starter" />
         <module name="starter" />

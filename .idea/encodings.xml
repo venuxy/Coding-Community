@@ -47,5 +47,7 @@
     <file url="file://$PROJECT_DIR$/subject/subject-application/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/subject/subject-domain/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/subject/subject-domain/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wx/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/wx/src/main/resources" charset="UTF-8" />
   </component>
 </project>
