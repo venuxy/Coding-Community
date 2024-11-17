@@ -1,17 +1,20 @@
 package com.venux.wx.controller;
 
+import com.venux.wx.utils.MessageUtil;
 import com.venux.wx.utils.SHA1;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import javax.print.attribute.standard.Media;
+import java.awt.*;
+import java.util.Map;
 
 @RestController
 @Slf4j
 public class CallBackController {
 
-    private static final String token = "adwidhaidwoaid";
+    private static final String token = "143099842ba7564f";
 
     @RequestMapping("/test")
     public String test() {
@@ -31,9 +34,30 @@ public class CallBackController {
         String shaStr = SHA1.getSHA1(token, timestamp, nonce, "");
         if (signature.equals(shaStr)) {
             return echostr;
-
         }
         return "unknown";
     }
+
+    @PostMapping(value = "callback", produces = "application/xml;charset=UTF-8")
+    public String callback(
+            @RequestBody String requestBody,
+            @RequestParam("signature") String signature,
+            @RequestParam("timestamp") String timestamp,
+            @RequestParam("nonce") String nonce,
+            @RequestParam(value = "msg_signature", required = false) String msgSignature) {
+        log.info("接收到微信消息：requestBody：{}", requestBody);
+        Map<String, String> messageMap = MessageUtil.parseXml(requestBody);
+        String fromUserName = messageMap.get("FromUserName");
+        String toUserName = messageMap.get("ToUserName");
+        String content = "<xml>\n" +
+                "  <ToUserName><![CDATA["+fromUserName+"]]></ToUserName>\n" +
+                "  <FromUserName><![CDATA["+toUserName+"]]></FromUserName>\n" +
+                "  <CreateTime>12345678</CreateTime>\n" +
+                "  <MsgType><![CDATA[text]]></MsgType>\n" +
+                "  <Content><![CDATA[venux来咯]]></Content>\n" +
+                "</xml>";
+        return content;
+    }
+
 
 }
