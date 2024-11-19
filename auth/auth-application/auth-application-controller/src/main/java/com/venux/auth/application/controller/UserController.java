@@ -1,5 +1,6 @@
 package com.venux.auth.application.controller;
 
+import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import com.alibaba.fastjson.JSON;
@@ -11,10 +12,7 @@ import com.venux.auth.domain.service.AuthUserDomainService;
 import com.venux.subject.common.entity.Result;
 import org.apache.commons.lang3.StringUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 import javax.annotation.Resource;
@@ -112,14 +110,14 @@ public class UserController {
 
     // 测试登录，浏览器访问： http://localhost:8081/user/doLogin?username=zhang&password=123456
     @RequestMapping("doLogin")
-    public String doLogin(String username, String password) {
-        // 此处仅作模拟示例，真实项目需要从数据库中查询数据进行比对
-        if("zhang".equals(username) && "123456".equals(password)) {
-            StpUtil.login("venux");
-            StpUtil.getTokenInfo();
-            return "登录成功";
+    public Result<SaTokenInfo> doLogin(@RequestParam("validCode") String validCode) {
+        try {
+            Preconditions.checkArgument(!StringUtils.isBlank(validCode),"验证码不能为空!");
+            return Result.ok(authUserDomainService.doLogin(validCode));
+        }catch (Exception e){
+            log.error("UserController.doLogin.error:{}", e.getMessage(), e);
+            return Result.fail("用户登录失败");
         }
-        return "登录失败";
     }
 
     // 查询登录状态，浏览器访问： http://localhost:8081/user/isLogin
