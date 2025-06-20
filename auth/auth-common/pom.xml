@@ -62,12 +62,7 @@
             <artifactId>commons-pool2</artifactId>
             <version>2.9.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.venux</groupId>
-            <artifactId>common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+        <!-- 移除对subject模块common的依赖，避免冲突 -->
     </dependencies>
 
 </project>
